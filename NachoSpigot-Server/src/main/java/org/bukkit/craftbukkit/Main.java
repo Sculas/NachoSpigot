@@ -21,6 +21,10 @@ public class Main {
 
     public static void main(String[] args) {
         System.setProperty("log4j2.formatMsgNoLookups", "true");
+        if(!SystemUtils.IS_OS_LINUX) {
+            System.err.println("Moonlight uses native code which requires Linux to run.");
+            System.exit(1);
+        }
 
         try {
             if(!SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_15)) {
